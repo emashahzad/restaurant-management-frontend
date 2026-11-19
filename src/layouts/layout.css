@@ -1,0 +1,112 @@
+
+/* =================================
+   MAIN LAYOUT
+================================= */
+
+.custom-layout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* =================================
+   LAYOUT BODY
+================================= */
+
+.layout-body {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+    margin: 0;
+    margin-bottom: 55px;
+    overflow: hidden;
+}
+
+/* =================================
+   SIDEBAR CONTAINER
+================================= */
+
+.sidebar-container {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    bottom: 55px;
+    width: 250px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    transition: width 0.3s ease;
+    z-index: 1040;
+}
+
+.sidebar-container.sidebar-closed {
+    width: 0;
+}
+
+/* =================================
+   MAIN CONTENT
+================================= */
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+    margin-left: 250px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: #f4f6f9;
+    transition: margin-left 0.3s ease;
+}
+
+.sidebar-container.sidebar-closed ~ .main-content {
+    margin-left: 0;
+}
+
+/* =================================
+   TABLET RESPONSIVE
+================================= */
+
+@media (max-width: 991.98px) {
+    .sidebar-container {
+        width: 220px;
+    }
+
+    .sidebar-container.sidebar-closed {
+        width: 0;
+    }
+
+    .main-content {
+        margin-left: 220px;
+    }
+}
+
+/* =================================
+   MOBILE RESPONSIVE
+================================= */
+
+@media (max-width: 575.98px) {
+    .sidebar-container {
+        top: 62px;
+        width: 190px;
+    }
+
+    .sidebar-container.sidebar-closed {
+        width: 0;
+    }
+
+    .main-content {
+        margin-left: 190px;
+    }
+
+    .main-content .container-fluid {
+        padding: 12px !important;
+    }
+}
+
+/* Sidebar closed on all screens */
+
+.sidebar-container.sidebar-closed ~ .main-content {
+    margin-left: 0;
+}
